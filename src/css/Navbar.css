@@ -1,0 +1,27 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 10vh;
+    background: #31354E;
+    padding: 0 1em 0 1em;
+    color: white;
+    font-size: large;
+  }
+  nav img {
+    height: 80px;
+    width: 80px;
+  }
+  
+  nav ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 20%;
+    list-style: none;
+  }
+  
+  .text-link {
+      color: white;
+      text-decoration: none;
+  }
