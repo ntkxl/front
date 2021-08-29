@@ -42,7 +42,6 @@ export default function ConnectWallet(props) {
     }
     
     useEffect (() => {
-        
         // loadBlockchainData()
     }, [props.account])
 
