@@ -3,13 +3,14 @@ nav {
     justify-content: space-between;
     align-items: center;
     min-height: 10vh;
+    height: 20vh;
     background: #31354E;
     padding: 0 1em 0 1em;
     color: white;
     font-size: large;
   }
   nav img {
-    height: 80px;
+    
     width: 80px;
   }
   
@@ -24,4 +25,14 @@ nav {
   .text-link {
       color: white;
       text-decoration: none;
+      font-weight: 700;
+  }
+
+  .address {
+    padding: .3em .5em;
+    border-radius: 10px;
+    color: white;
+    background-color: #18A1BF;
+    border: none;
+    
   }
