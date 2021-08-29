@@ -1,5 +1,9 @@
+:root {
+  --primary-clr: #191B27;
+  --secondary-clr: #31354E;
+}
 body {
-  background: #191B27;
+  background: var(--primary-clr);
 }
 
 .App {
@@ -16,4 +20,10 @@ button {
   background-color: #18A1BF;
   border: none;
   cursor: pointer;;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

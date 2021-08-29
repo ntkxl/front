@@ -2,6 +2,7 @@ import '../css/App.css';
 import Navbar from '../components/Navbar';
 import Home from '../views/Home';
 import Team from '../views/Team';
+import Swap from '../views/Swap';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
@@ -14,7 +15,7 @@ function App() {
   }
 
   useEffect(() => {
-    console.log(account);
+    // console.log(account);
   }, [account])
 
   return (
@@ -23,7 +24,11 @@ function App() {
         <Navbar account={account} onChange={handleChangeAccount}/>
         <Switch>
           <Route path="/" exact component={Home}/>
-          {/* <Route path="/swap" component={Swap} /> */}
+          <Route 
+            path="/swap" 
+            render={() => (
+              <Swap account={account}/>
+            )} />
           <Route path="/team" component={Team} />
         </Switch>
 

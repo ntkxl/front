@@ -19,7 +19,7 @@ export default function ConnectWallet(props) {
         else {
           window.alert("Non-Ethereum browser detected")
         }
-      }
+    }
     
     const loadBlockchainData = async () => {
         const web3 = window.web3

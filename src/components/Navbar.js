@@ -18,10 +18,9 @@ export default function Navbar(props) {
                 <Link to='/' className="text-link">
                     <li>Home</li>
                 </Link>
-                {/* will add path later */}
-                {/* <Link className="text-link"> */}
+                <Link to='/swap' className="text-link">
                     <li>Swap</li>
-                {/* </Link> */}
+                </Link>
                 <Link to='/team' className="text-link">
                     <li>Team</li>
                 </Link>
