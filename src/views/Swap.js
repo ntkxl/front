@@ -4,6 +4,7 @@ import TokenSwap from '../contracts/TokenSwap.json'
 import WaffToken from '../contracts/WaffToken.json'
 import { useState, useEffect } from 'react'
 import BuyForm from '../components/BuyForm'
+import SellForm from '../components/SellForm'
 
 export default function Swap(props) {
 
@@ -12,7 +13,7 @@ export default function Swap(props) {
     const [ethBalance, setEthBalance] = useState('0')
     const [swapToken, setSwapToken] = useState({})
     const [account, setAccount] = useState(props.account)
-    const [isBuy, setIsBuy] = useState(true)
+    const [swapState, setSwapState] = useState(true)
     
 
     const Web3 = require('web3');
@@ -40,7 +41,7 @@ export default function Swap(props) {
                 
                 let waffBalance = await waff.methods.balanceOf(account).call() / 10 ** 18
                 setWaffBalance(waffBalance)
-                console.log(waffBalance.toString());
+                // console.log(waffBalance.toString());
             }else {
                 window.alert('Token contract not deployed')
             }
@@ -62,26 +63,37 @@ export default function Swap(props) {
         // console.log(waffBalance);
         
         // console.log(tokenData);
+        // console.log(swapToken._address);
     } 
-    const buyWaff = (ethAmount) => {
-        swapToken.methods.buyWaffle(100).send({ from: account, value: ethAmount }).on('transactionHash', (hash) => {
-            window.location.reload()
-        })
+    const buyWaff = async (ethAmount) => {
+        await swapToken.methods.buyWaffle(100).send({ from: account, value: ethAmount })
+        window.location.reload()
+        window.alert('swap success')
+        
+    }
+
+    const sellWaff = async (waffAmount) => {
+        await waff.methods.approve(swapToken._address, waffAmount).send({ from: account })
+        await swapToken.methods.sellWaffle(100, waffAmount).send({ from: account, value: waffBalance})
+        window.location.reload()
         window.alert('swap success')
     }
 
-    const handleConvert = () => {
-        setIsBuy(!isBuy)
+    const handleChangeState = (state) => {
+        setSwapState(state)
+        
     }
 
     
     useEffect(() => {
         checkLogin()
         loadData()
+        
     }, [account])
 
     return (
         <div>
+            
             {!account ? 
             <div>
                 <h3>Ahh</h3>
@@ -89,18 +101,27 @@ export default function Swap(props) {
             </div> 
             : 
             <div>
-                {isBuy ? 
+                {swapState ? 
                     <BuyForm 
                         ethBalance={ethBalance} 
                         waffBalance={waffBalance}
                         buyWaff={buyWaff}
+                        handleChangeState = {handleChangeState}
                     />
                     :
-                    <h3>Mocksellform</h3>}
-                <button onClick={handleConvert}>convert</button>
+                    <SellForm
+                        ethBalance={ethBalance} 
+                        waffBalance={waffBalance}
+                        sellWaff={sellWaff}
+                        handleChangeState = {handleChangeState}
+                    />
+                }
+                {/* <button onClick={handleChangeState}>convert</button> */}
+                
                 
             </div>
             }
+            
         </div>
     )
 }

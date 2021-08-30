@@ -1,16 +1,17 @@
 .main-container {
     margin: 0 auto;
     width: 400px;
-    height: 300px;
+    height: 340px;
     background-color: var(--secondary-clr);
     border-radius: 10px;
 }
 .main-container h2 {
     text-align: left;
     padding: .5em 0 0 1em;
-    margin-bottom: 0;
+    margin-bottom: 1em;
 }
 .main-container p {
+    margin-top: 0;
     margin-bottom: .2em;
 }
 
@@ -21,7 +22,7 @@
     align-items: center;
     padding: 0 1.5em;
 }
-.wrap-input {
+.input-wrap {
     display: flex;
     width: 88%;
     height: 34px;
@@ -38,7 +39,7 @@ input {
     color: white;
     border-radius: 4px;
 }
-.wrap-input .token {
+.input-wrap .token {
     display: flex;
     background-color: var(--primary-clr);
     width: 90px;
@@ -56,6 +57,25 @@ input {
     height: 28px;
 }
 .main-container button {
-    margin-top: 1em;
+    margin-top: 2em;
     width: 100px;
+}
+
+.arrow-wrap {
+    margin: 1.2em 0 0 0;
+    font-size: 1.5em;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: var(--blue-clr);
+    position: relative;
+    cursor: pointer;
+    margin: 1em auto 0 auto;
+}
+
+.arrow-icon {
+    position: absolute;
+    top: 20%;
+    left: 25%;
+
 }

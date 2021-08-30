@@ -1,6 +1,7 @@
 :root {
   --primary-clr: #191B27;
   --secondary-clr: #31354E;
+  --blue-clr : #18A1BF;
 }
 body {
   background: var(--primary-clr);
@@ -17,7 +18,7 @@ button {
   font-size: large;
   font-weight: 700;
   color: white;
-  background-color: #18A1BF;
+  background-color: var(--blue-clr);
   border: none;
   cursor: pointer;;
 }
