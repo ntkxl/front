@@ -14,7 +14,7 @@ export default function Swap(props) {
     const [swapToken, setSwapToken] = useState({})
     const [account, setAccount] = useState(props.account)
     const [swapState, setSwapState] = useState(true)
-    
+    const [update, setUpdate] = useState(false)
 
     const Web3 = require('web3');
     const web3 = new Web3(Web3.givenProvider);
@@ -67,7 +67,7 @@ export default function Swap(props) {
     } 
     const buyWaff = async (ethAmount) => {
         await swapToken.methods.buyWaffle(100).send({ from: account, value: ethAmount })
-        window.location.reload()
+        setUpdate(true)
         window.alert('swap success')
         
     }
@@ -75,7 +75,7 @@ export default function Swap(props) {
     const sellWaff = async (waffAmount) => {
         await waff.methods.approve(swapToken._address, waffAmount).send({ from: account })
         await swapToken.methods.sellWaffle(100, waffAmount).send({ from: account, value: waffBalance})
-        window.location.reload()
+        setUpdate(true)
         window.alert('swap success')
     }
 
@@ -86,10 +86,11 @@ export default function Swap(props) {
 
     
     useEffect(() => {
+        setUpdate(false)
         checkLogin()
         loadData()
         
-    }, [account])
+    }, [account, update])
 
     return (
         <div>
