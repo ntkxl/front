@@ -74,7 +74,7 @@ export default function Swap(props) {
 
     const sellWaff = async (waffAmount) => {
         await waff.methods.approve(swapToken._address, waffAmount).send({ from: account })
-        await swapToken.methods.sellWaffle(100, waffAmount).send({ from: account, value: waffBalance})
+        await swapToken.methods.sellWaffle(100, waffAmount).send({ from: account, value: waffAmount})
         setUpdate(true)
         window.alert('swap success')
     }
