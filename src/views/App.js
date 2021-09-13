@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import Home from '../views/Home';
 import Team from '../views/Team';
 import Swap from '../views/Swap';
+import Stake from '../views/Stake';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
@@ -29,6 +30,9 @@ function App() {
             path="/swap" 
             render={() => (
               <Swap account={account}/>
+            )} />
+          <Route path="/stake"  render={() => (
+              <Stake account={account}/>
             )} />
           <Route path="/team" component={Team} />
         </Switch>
